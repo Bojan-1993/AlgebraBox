@@ -5,13 +5,14 @@ namespace App\Http\Controllers\Auth;
 use Mail;
 use Session;
 use Sentinel;
-use File;
-use Illuminate\Support\Facades\Hash;
 use Activation;
+Use Hash;
+Use File;
 use App\Http\Requests;
 use Centaur\AuthManager;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
 
 class RegistrationController extends Controller
 {
@@ -85,7 +86,7 @@ class RegistrationController extends Controller
 		
 		$hashedMap = Hash::make('$result->user->id');
 		File::makeDirectory(base_path("storage/app/maps/users_$hashedMap"), 0755, true, true);
-
+		
         // Ask the user to check their email for the activation link
         $result->setMessage('Registration complete.  Please check your email for activation instructions.');
 
