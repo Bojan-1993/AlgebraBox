@@ -5,14 +5,14 @@
 @section('content')
 <div class="row">
   <ol class="breadcrumb">
-    <li class="active">Home</li>
+    <li class="active">Categories</li>
   </ol>
 </div>
 <div class="row">
 	<div class="col-md-3">
 		<div class="list-group">
-			<a href="#" class="list-group-item">Folders &amp; Files </a>
-			<a href="{{route(''categories')}}" class="list-group-item">Categories</a>
+			<a href="{{route('home')}}" class="list-group-item">Folders &amp; Files </a>
+			<a href="#" class="list-group-item Categories</a>
 			<a href="#" class="list-group-item">Shared</a>
 		</div>
 	</div>
