@@ -5,6 +5,7 @@
 @section('content')
 <div class="row">
   <ol class="breadcrumb">
+	<li><a href="{{route('home')}}">Home</a></li>
     <li class="active">Categories</li>
   </ol>
 </div>
@@ -19,9 +20,9 @@
 	<div class="col-md-9">
 		<div class="panel panel-default">
 			<div class="panel-heading clearfix">
-				<h3 class="panel-title">Folders &amp; Files</h3>
+				<h3 class="pull-left panel-title">Categories</h3>
 				<div class="pull-right">
-				<a>
+				<a href="{{route('categories.create')}}">
 					<span class="pull-right glyphicon glyphicon-tag" aria-hidden="true"></span>
 					<span class="pull-right glyphicon glyphicon-plus" aria-hidden="true"></span>
 				</a>
