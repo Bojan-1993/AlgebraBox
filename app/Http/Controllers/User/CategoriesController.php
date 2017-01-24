@@ -24,7 +24,8 @@ use App\Http\Controllers\Controller;
      */
     public function index()
     {
-        return view('user.categories.index');
+        $user_categories=category::orderBy('name','desc'->get()
+        return view('user.categories.index', 'user_categories'=>$user_categories);
     }
 
     /**
