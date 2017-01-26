@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\User;
-
+use Session;
+use Sentinel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+<<<<<<< HEAD
  
   class CategoriesController extends Controller
   {
@@ -20,12 +22,43 @@ use App\Http\Controllers\Controller;
       /**
        * Display a listing of the resource.
        *
+=======
+use App\Models\Sections;
+use App\Models\Categories;
+use App\Models\Users;
+use App\Models\CategorieUser;
+
+
+
+class CategoriesController extends Controller
+{
+	
+	
+	public function __construct()
+    {
+        // Middleware
+        $this->middleware('sentinel.auth');
+
+    }
+    /**
+     * Display a listing of the resource.
+     *
+>>>>>>> c9908752499ed7431b9e3d84009ef9bcd9508bcf
      * @return \Illuminate\Http\Response
      */
     public function index()
+	
     {
+<<<<<<< HEAD
         $user_categories=category::orderBy('name','desc'->get()
         return view('user.categories.index', 'user_categories'=>$user_categories);
+=======
+		
+		$categories = Categories::all();
+		
+		
+        return view('user.categories.index', ['categories' => $categories]);
+>>>>>>> c9908752499ed7431b9e3d84009ef9bcd9508bcf
     }
 
     /**
@@ -35,7 +68,10 @@ use App\Http\Controllers\Controller;
      */
     public function create()
     {
-        return view('user.categories.create');
+		
+    	$sections = sections::all();
+		
+        return view('user.categories.create', ['sections' => $sections]);
     }
 
     /**
@@ -46,7 +82,31 @@ use App\Http\Controllers\Controller;
      */
     public function store(Request $request)
     {
-        //
+		
+		
+		
+		
+		
+		 // Unos u tablicu categories
+        $categories = new Categories();
+        $categories->name = $request->name;
+		$categories->sections_id = $request->sections_id;
+        $categories->save();
+		
+		// Unos u pivot tablicu users_categories
+		
+	    $user = Sentinel::getUser()->id;
+		
+		$users_categories = new CategorieUser();
+		$users_categories->user_id = $user;
+		$users_categories->categorie_id = $categories->id;
+		$users_categories->save();
+		
+		
+		// return na list
+		
+      
+       return redirect()->route('categories.index');
     }
 
     /**

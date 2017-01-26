@@ -20,6 +20,8 @@ Route::get('home', ['as' => 'home', 'uses' => 'User\HomeController@index']);
 Route::group(['prefix' => 'user'], function () {
 
   Route::resource('categories', 'User\CategoriesController');
+  Route::post('categories/store', ['uses' => 'User\CategoriesController@store']);
+
 });
 
 // Authorization
