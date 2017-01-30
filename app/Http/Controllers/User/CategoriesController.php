@@ -5,6 +5,10 @@ use Session;
 use Sentinel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Sections;
+use App\Models\Categories;
+use App\Models\Users;
+use App\Models\CategorieUser;
 
  
   class CategoriesController extends Controller
@@ -14,31 +18,10 @@ use App\Http\Controllers\Controller;
      {
          // Middleware
          $this->middleware('sentinel.auth');
-         $this->middleware('sentinel.access:categories.create', ['only' => ['create', 'store']]);
-         $this->middleware('sentinel.access:categories.destroy', ['only' => ['destroy']]);
      }
       /**
        * Display a listing of the resource.
        *
-use App\Models\Sections;
-use App\Models\Categories;
-use App\Models\Users;
-use App\Models\CategorieUser;
-
-
-
-class CategoriesController extends Controller
-{
-	
-	
-	public function __construct()
-    {
-        // Middleware
-        $this->middleware('sentinel.auth');
-
-    }
-    /**
-     * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
