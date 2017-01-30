@@ -19,10 +19,6 @@
 		<div class="list-group">
 			<a href="#" class="list-group-item active">Folders &amp; Files </a>
 			<a href="{{route('categories.index')}}" class="list-group-item">Categories</a>
-<<<<<<< HEAD
-			<a href="#" class="list-group-item">Shared</a>
-	</div>
-=======
 			<a href="{{--  {{route('categories.shared')}} --}}#" class="list-group-item">Shared</a>
 		</div>	
 		
@@ -134,5 +130,4 @@
 		</div>
 	</div>
 </div>
->>>>>>> c9908752499ed7431b9e3d84009ef9bcd9508bcf
 @stop

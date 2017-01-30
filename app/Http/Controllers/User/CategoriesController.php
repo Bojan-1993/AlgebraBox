@@ -5,7 +5,7 @@ use Session;
 use Sentinel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-<<<<<<< HEAD
+
  
   class CategoriesController extends Controller
   {
@@ -15,14 +15,11 @@ use App\Http\Controllers\Controller;
          // Middleware
          $this->middleware('sentinel.auth');
          $this->middleware('sentinel.access:categories.create', ['only' => ['create', 'store']]);
-         $this->middleware('sentinel.access:categories.view', ['only' => ['index', 'show']]);
-         $this->middleware('sentinel.access:categories.update', ['only' => ['edit', 'update']]);
          $this->middleware('sentinel.access:categories.destroy', ['only' => ['destroy']]);
      }
       /**
        * Display a listing of the resource.
        *
-=======
 use App\Models\Sections;
 use App\Models\Categories;
 use App\Models\Users;
@@ -43,22 +40,15 @@ class CategoriesController extends Controller
     /**
      * Display a listing of the resource.
      *
->>>>>>> c9908752499ed7431b9e3d84009ef9bcd9508bcf
      * @return \Illuminate\Http\Response
      */
     public function index()
 	
     {
-<<<<<<< HEAD
-        $user_categories=category::orderBy('name','desc'->get()
-        return view('user.categories.index', 'user_categories'=>$user_categories);
-=======
-		
 		$categories = Categories::all();
 		
 		
         return view('user.categories.index', ['categories' => $categories]);
->>>>>>> c9908752499ed7431b9e3d84009ef9bcd9508bcf
     }
 
     /**
@@ -151,6 +141,11 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+         
+        $categories = Categories::find($id);
+        $categories->delete();
+ 
+ 		session()->flash('success', "Category '{$categories->name}' has been deleted.");
+        return redirect()->route('categories.index');
     }
 }

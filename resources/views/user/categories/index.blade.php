@@ -27,9 +27,6 @@
 				</a>
 				</div>
 			</div>
-<<<<<<< HEAD
-			<div class="panel-body">	
-=======
 
 			<div class="panel-body">
 				<table class="table table-striped">
@@ -54,7 +51,12 @@
 		  <td>{{ $category->sections->name }}</td>
 		  <td>
 		  <span class="label label-success">Edit</span>
-		  <span class="label label-danger">Delete</span> 
+			<form class="delete" action="{{ route('categories.destroy', $category->id) }}" method="POST">
+				<input type="hidden" name="_method" value="DELETE">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}" />
+				
+				<button type="submit" class="btn btn-default"><span class="label label-danger">Delete</span></button>
+			</form> 
 		  </td>
 		  
         <td>
@@ -69,7 +71,6 @@
 			<div>
 				
 			</div>
->>>>>>> c9908752499ed7431b9e3d84009ef9bcd9508bcf
 		</div>
 	</div>
 </div>
