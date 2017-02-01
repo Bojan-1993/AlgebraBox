@@ -132,20 +132,13 @@ use App\Models\CategorieUser;
      */
     public function destroy($id)
     {
-<<<<<<< HEAD
-         
-        $categories = Categories::find($id);
-        $categories->delete();
- 
- 		session()->flash('success', "Category '{$categories->name}' has been deleted.");
-=======
         // delete
         $categories = Categories::find($id);
         $categories->delete();
 
         // redirect
 		//session()->flash('success', "Category '{$categories->name}' has been deleted.");
->>>>>>> 00dce274d92839346cb8daa02bd893f256958b7e
+
         return redirect()->route('categories.index');
     }
 }
