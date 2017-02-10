@@ -3,48 +3,103 @@
 @section('title', 'Users')
 
 @section('content')
+
     <div class="page-header">
         <div class='btn-toolbar pull-right'>
-            <a class="btn btn-primary btn-lg" href="{{ route('users.create') }}">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            <a class="btn  btn-lg background-orange" href="{{ route('users.create') }}">
                 Create User
             </a>
         </div>
-        <h1>Users</h1>
+        <h1>USERS</h1>
     </div>
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             @foreach ($users as $user)
-                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                    <div class="panel panel-default">
-                        <div class="panel-body text-center">
-                            <img src="//www.gravatar.com/avatar/{{ md5($user->email) }}?d=mm" alt="{{ $user->email }}" class="img-circle">
-                            @if (!empty($user->first_name . $user->last_name))
-                                <h4>{{ $user->first_name . ' ' . $user->last_name}}</h4>
+                <div>
+                    <div class="panvel panel-default">
+					
+                        <div class="panel-body text-left">
+						<div class="col-md-4 user-info background-blue">
+						
+						<div class="col-md-6 user-info-inner background-blue">
+                            <p>
+							<img src="//www.gravatar.com/avatar/{{ md5($user->email) }}?d=mm" alt="{{ $user->email }}">
+                            </p>
+							
+							<p>
+								<a href="{{ route('users.edit', $user->id) }}" class="btn background-green">
+									Edit
+								</a>
+							</p>
+							
+							<p>
+								<a href="{{ route('users.destroy', $user->id) }}" class="btn background-orange action_confirm" data-method="delete" data-token="{{ csrf_token() }}">
+									Delete
+								</a>
+							</p>
+						</div>
+						
+						
+						<div class="col-md-6 user-info-inner background-blue">
+						@if (!empty($user->first_name . $user->last_name))
+                                <p>{{ $user->first_name . ' ' . $user->last_name}}</p>
                                 <p>{{ $user->email }}</p>
                             @else
-                                <h4>{{ $user->email }}</h4>
+                                <p>{{ $user->email }}</p>
                             @endif
-                        </div>
-                        <ul class="list-group">
-                            <li class="list-group-item">
+							
+							<p>IP: 128.1.1.0</p>
+							<p>Active: Yes / No</p>
+						</div>
+						</div>
+						
+						
+						
+							<div class="col-md-4 user-info background-orange">
+							
+                            <p>
                             @if ($user->roles->count() > 0)
                                 {{ $user->roles->implode('name', ', ') }}
                             @else
                                 <em>No Assigned Role</em>
                             @endif
-                            </li>
-                        </ul>
-                        <div class="panel-footer">
-                            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-default">
-                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                                Edit
-                            </a>
-                            <a href="{{ route('users.destroy', $user->id) }}" class="btn btn-danger action_confirm" data-method="delete" data-token="{{ csrf_token() }}">
-                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                                Delete
-                            </a>
+                            <p>
+							<p>
+                            Registreted on: {{ Sentinel::check()->created_at}}
+                            <p>
+							<p>
+                            Bandtwit: 2GB
+                            <p>
+							<p>
+                            Folder name: 2549+51sdhgfdhj+8915
+                            <p>
+                       
+						 </div>
+						 
+						 
+						 <div class="col-md-4 user-info background-green">
+						
+							<p>
+								Used space: 1.8 GB
+                            </p>
+                            <p>
+								Folders: 185
+                            <p>
+							<p>
+								Files: 185
+                            <p>
+							<p>
+								Shared files: 18
+                            <p>
+							
+                      
+						  </div>
+						  
+						  
+						  
                         </div>
+                        
+                        
                     </div>
                 </div>
             @endforeach
